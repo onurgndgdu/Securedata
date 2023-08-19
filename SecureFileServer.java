@@ -1,5 +1,6 @@
 import javax.net.ssl.*;
 import java.io.*;
+import java.net.Socket;
 import java.security.*;
 public class SecureFileServer {
     public static void main(String[] args) throws Exception{
@@ -20,7 +21,25 @@ public class SecureFileServer {
         SSLServerSocketFactory sslServerSocketFactory = sslContext.getServerSocketFactory();
         SSLServerSocket serverSocket = (SSLServerSocket) sslServerSocketFactory.createServerSocket(port);
 
+        System.out.println("Server is listening on port " + port);
 
+        while(true){
+            try (Socket socket = serverSocket.accept();
+            OutputStream outputStream = socket.getOutputStream();
+            FileInputStream fileInputStream = new FileInputStream("samplefile.txt"))
+            {
+                byte[] buffer = new byte[1024];
+                int bytesRead;
+
+                while ((bytesRead = fileInputStream.read(buffer)) != -1) {
+                    outputStream.write(buffer, 0, bytesRead);
+                }
+                System.out.println("File sent to client.");
+            }
+            catch (IOException exception) {
+                exception.printStackTrace();
+            }
+        }
 
     }
 }
