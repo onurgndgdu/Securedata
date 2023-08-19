@@ -11,9 +11,6 @@ keystoreFile, keystore dosyasının diskteki yolu veya yolunu temsil eder. Bu do
 KeyManagerFactory:
 KeyManagerFactory, KeyManager'ların oluşturulmasını ve yönetilmesini sağlar. KeyManager'lar, sunucu tarafındaki güvenlik kimliklerini yönetmek için kullanılır. Bu kimlikler, sunucunun kimliğini doğrulama ve güvence altına alma amacıyla kullanılır.
 
-SSLContext:
-SSLContext, güvenli bağlantı kurmak için gereken güvenlik parametrelerini ve protokollerini yönetir. Bu bağlam, güvenli veri iletimi için gerekli olan şifreleme, kimlik doğrulama ve güvenlik katmanı protokollerini belirler.
-
 SSLServerSocketFactory:
 SSLServerSocketFactory, sunucu tarafındaki güvenli soketleri oluşturmak için kullanılır. Bu fabrika, sunucu tarafında gelen bağlantıları kabul etmek ve güvenli iletişim için gerekli ayarları yapmak için kullanılır.
 
